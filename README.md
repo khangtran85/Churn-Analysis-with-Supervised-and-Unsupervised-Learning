@@ -13,5 +13,8 @@ The dataset used for this analysis includes variables such as customer demograph
 
 - *Segment churned users based on behavior:* Group churned users by their behaviors and characteristics, highlighting differences between these groups, to inform targeted retention strategies and promotional offers.
 # Processing
+## Prepare the data
 
+## Predict churned users by using supervised learning model
+## Segment these churned users into groups by using unsupervised learning model
 # Recommendation
