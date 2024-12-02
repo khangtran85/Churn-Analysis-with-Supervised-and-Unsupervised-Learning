@@ -168,5 +168,35 @@ From the PCA plot, it is necessary to select the optimal number of principal com
 
 Furthermore, based on the elbow method, three clusters are identified as the ideal number. Choosing a smaller number of clusters not only makes differentiation more straightforward but also enhances practical applications. This approach allows for more targeted and cost-effective strategies when implementing campaigns tailored to each cluster.
 
+![Number_of_cluster.png](https://github.com/khangtran85/Churn-Analysis-with-Supervised-and-Unsupervised-Learning/blob/main/Number_of_cluster.png)
 
+The result is a visualized cluster plot:
+
+![Clusters_char.png](https://github.com/khangtran85/Churn-Analysis-with-Supervised-and-Unsupervised-Learning/blob/main/Clusters_char.png)
+
+The final step (or perhaps an additional step) is to identify which cluster is the most significant.
+``` python
+df_pca2 = pd.DataFrame(pca_data_2, columns=['PC1', 'PC2', 'PC3'])
+df_pca2['Cluster'] = labels_2
+
+X_2 = df_pca2.drop('Cluster', axis=1)
+y_2 = df_pca2['Cluster']
+
+from sklearn.metrics import classification_report
+X_train_2, X_test_2, y_train_2, y_test_2 = train_test_split(X_2, y_2, test_size=0.2, random_state=5)
+rf2 = RandomForestClassifier(n_estimators=100, random_state=85)
+rf2.fit(X_train_2, y_train_2)
+y_pred_2 = rf2.predict(X_test_2)
+print(classification_report(y_test_2, y_pred_2))
+
+importances = rf2.feature_importances_
+features_names = X_2.columns
+feature_importances = sorted(zip(importances, features_names), reverse=True)
+
+for importance, feature_name in feature_importances:
+    print(f"{feature_name}: {importance}")
+```
 # Recommendation
+- For churn prediction, as previously analyzed, the model's ability to process new datasets for forecasting is highly advantageous. It allows businesses to proactively identify customers at risk of churning. By recognizing these at-risk individuals, companies can evaluate engagement trends and implement targeted strategies to strengthen user retention. For instance, offering personalized incentives, loyalty rewards, or exclusive promotions could help re-engage these customers. Additionally, enhancing customer service and addressing complaints promptly may foster a deeper sense of trust and satisfaction, increasing the likelihood of retaining these users as loyal customers.
+
+- In the case of user segmentation, distinguishing the unique characteristics of each cluster remains a complex challenge due to the "black box" nature of clustering algorithms. Although the reasoning behind the segmentation might be unclear, supplementary analysis can help identify the most impactful clusters. By understanding these key clusters, businesses can tailor their strategies to cater to the specific needs and behaviors of each group. For example, high-value customers might benefit from premium services or early access to products, while less engaged groups could be targeted with educational campaigns or incentives to explore new features. By customizing strategies for each cluster, organizations can enhance user experiences and maximize overall customer value.
