@@ -162,4 +162,11 @@ In the current dataset, there are too many columns (20 columns), and if all are 
 
 The goal of PCA is to identify the directions (principal components) in which the data varies the most and project the data onto these directions. This reduces the number of necessary features while retaining most of the important information. The key aspect of PCA is that it **preserves features with the highest variance**, ensuring that the most significant variations in the data are kept for further analysis.
 
+![PCA_Churn_Users.png](https://github.com/khangtran85/Churn-Analysis-with-Supervised-and-Unsupervised-Learning/blob/main/PCA_Churn_Users.png)
+
+From the PCA plot, it is necessary to select the optimal number of principal components for clustering. The analysis reveals that five principal components have variances greater than 1.5. However, for simplicity and standard practice, two principal components will be chosen. This means the original data can be represented in a two-dimensional space while retaining most of its variability.
+
+Furthermore, based on the elbow method, three clusters are identified as the ideal number. Choosing a smaller number of clusters not only makes differentiation more straightforward but also enhances practical applications. This approach allows for more targeted and cost-effective strategies when implementing campaigns tailored to each cluster.
+
+
 # Recommendation
