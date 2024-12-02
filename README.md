@@ -156,4 +156,10 @@ For the clustering task related to predicting customer churn, the initial data p
 
 Additionally, since this is a clustering task focusing on customer churn, we will filter the dataset to include only customers who have churned, i.e., those with churn = 1. This step helps to isolate the relevant data for clustering and ensures that the model focuses on the group of users who have left.
 
+Clustering involves categorizing customers into different groups, and the criteria for this classification are not directly known; it is often referred to as a "black box" in machine learning. However, one thing that can be controlled is the input data used for clustering.
+
+In the current dataset, there are too many columns (20 columns), and if all are used (including the Churn column), it may be difficult to distinguish between clusters or identify meaningful differences based on the available features. To address this, Principal Component Analysis (PCA) is applied.
+
+The goal of PCA is to identify the directions (principal components) in which the data varies the most and project the data onto these directions. This reduces the number of necessary features while retaining most of the important information. The key aspect of PCA is that it **preserves features with the highest variance**, ensuring that the most significant variations in the data are kept for further analysis.
+
 # Recommendation
